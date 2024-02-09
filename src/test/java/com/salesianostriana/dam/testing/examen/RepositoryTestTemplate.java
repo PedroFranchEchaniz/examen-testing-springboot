@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.testing.examen;
 
 import com.salesianostriana.dam.testing.examen.repo.DatoMeteorologicoRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,16 @@ class RepositoryTestTemplate {
 
 
 	@Test
-	void DatoMeteorologicoRepositorytest(){
+	void existePorFechaPoblacion(){
+		LocalDate fecha = LocalDate.of(2024, 06,9);
+		String ciudad = "Sevilla";
+		Assertions.assertTrue(datoMeteorologicoRepository.existePorFechaPoblacion(fecha, ciudad));
+	}
 
+	@Test
+	void buscarPorPoblacion(){
+		String ciudad = "Sevilla";
+		Assertions.assertEquals(1, datoMeteorologicoRepository.buscarPorPoblacion(ciudad));
 	}
 	@Test
 	void test() {
