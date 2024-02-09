@@ -3,6 +3,7 @@ package com.salesianostriana.dam.testing.examen;
 
 import com.salesianostriana.dam.testing.examen.dto.GetDatoMeteoDto;
 import com.salesianostriana.dam.testing.examen.model.DatoMeteorologico;
+import com.salesianostriana.dam.testing.examen.model.DatoMeterologicoPK;
 import com.salesianostriana.dam.testing.examen.service.ServicioMeteorologico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,13 +41,14 @@ public class ControllerTest {
 
     @Test
     void obtenerTodos_200() throws Exception{
+        DatoMeterologicoPK datoPk = new DatoMeterologicoPK("Sevilla", LocalDate.of(2024, 06, 9));
         GetDatoMeteoDto dto = new GetDatoMeteoDto("Sevilla", LocalDate.of(2024,06,9), 3.0);
-        DatoMeteorologico dato = new DatoMeteorologico("Sevilla", LocalDate.of(2024, 06, 9), )
+        DatoMeteorologico dato = new DatoMeteorologico(datoPk, 3.0);
 
-        Mockito.when(servicioMeteorologico.obtenerTodos()).thenReturn(List.of(dto));
+        Mockito.when(servicioMeteorologico.obtenerTodos()).thenReturn(List.of(dato));
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect();
+                .andExpect(objectMapper.writeValueAsString(dato));
 
 
 
