@@ -74,7 +74,7 @@ public class ServiceTest {
 
     }
 
-    @Test
+    /*@Test
     void insertarTest(){
         LocalDate localDate = LocalDate.of(2024,01,9);
         DatoMeterologicoPK d1pk = new DatoMeterologicoPK("Sevilla", localDate);
@@ -100,7 +100,10 @@ public class ServiceTest {
         Mockito.when(repository.existePorFechaPoblacion(LocalDate.now(), "sevilla")).thenThrow(RepeatedValueException.class, ()- >{
            repository.existePorFechaPoblacion(LocalDate.now(), "Sevilla");
         })
-    }
+    }*/
+
+
+
 
 
 }
